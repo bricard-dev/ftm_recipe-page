@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Young Serif';
+  src: url('assets/fonts/young-serif/YoungSerif-Regular.ttf') format('truetype'),
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype'),
+    url('assets/fonts/outfit/static/Outfit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype'),
+    url('assets/fonts/outfit/static/Outfit-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype'),
+    url('assets/fonts/outfit/static/Outfit-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: hsl(0, 0%, 100%);
+
+  --stone-150: hsl(30, 18%, 87%);
+  --stone-100: hsl(30, 54%, 90%);
+  --stone-600: hsl(30, 10%, 34%);
+  --stone-900: hsl(24, 5%, 18%);
+
+  --brown-800: hsl(14, 45%, 36%);
+
+  --pink-800: hsl(332, 51%, 32%);
+  --pink-50: hsl(330, 100%, 98%);
+}
+
+body {
+  font-size: 16px;
+}
