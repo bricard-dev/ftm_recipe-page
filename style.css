@@ -1,13 +1,14 @@
 @font-face {
   font-family: 'Young Serif';
-  src: url('assets/fonts/young-serif/YoungSerif-Regular.ttf') format('truetype'),
+  src: url('assets/fonts/young-serif/YoungSerif-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Outfit';
-  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype'),
+  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf')
+      format('truetype'),
     url('assets/fonts/outfit/static/Outfit-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
@@ -15,7 +16,8 @@
 
 @font-face {
   font-family: 'Outfit';
-  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype'),
+  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf')
+      format('truetype'),
     url('assets/fonts/outfit/static/Outfit-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
@@ -23,32 +25,214 @@
 
 @font-face {
   font-family: 'Outfit';
-  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf') format('truetype'),
+  src: url('assets/fonts/outfit/Outfit-VariableFont_wght.ttf')
+      format('truetype'),
     url('assets/fonts/outfit/static/Outfit-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
+  --default-font-size: 16px;
+  --primary-font: 'Outfit', sans-serif;
+  --secondary-font: 'Young Serif', sans-serif;
   --white: hsl(0, 0%, 100%);
-
   --stone-150: hsl(30, 18%, 87%);
   --stone-100: hsl(30, 54%, 90%);
   --stone-600: hsl(30, 10%, 34%);
   --stone-900: hsl(24, 5%, 18%);
-
   --brown-800: hsl(14, 45%, 36%);
-
   --pink-800: hsl(332, 51%, 32%);
   --pink-50: hsl(330, 100%, 98%);
 }
 
 body {
-  font-size: 16px;
+  background-color: var(--stone-100);
+  font-family: var(--primary-font);
+  font-size: var(--default-font-size);
+  line-height: 1.5rem;
+}
+
+section {
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--stone-150);
+  color: var(--stone-600);
+}
+
+h2 {
+  font-family: var(--secondary-font);
+  font-weight: 400;
+  font-size: 1.75rem;
+  color: var(--brown-800);
+}
+
+strong {
+  font-weight: 700;
+  color: var(--stone-600);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+ol,
+ul {
+  list-style-type: none;
+}
+
+ul li,
+ol li {
+  padding-left: 2.5rem;
+  position: relative;
+}
+
+ul li::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 0.5rem;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.card {
+  max-width: 736px;
+  margin: auto;
+  background-color: var(--white);
+}
+
+.card__image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card__recipe {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card__header {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card__title {
+  font-family: var(--secondary-font);
+  font-weight: 500;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.card__description {
+  color: var(--stone-600);
+}
+
+/* Preparation Time */
+
+.card__preparation-time {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  gap: 1rem;
+  border: none;
+  background-color: var(--pink-50);
+}
+
+.card__preparation-time h2 {
+  font-family: var(--primary-font);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--pink-800);
+}
+
+.card__preparation-time ul li::before {
+  background-color: var(--pink-800);
+}
+
+/* Ingredients */
+
+.card__ingredients ul li::before {
+  background-color: var(--brown-800);
+}
+
+/* Instructions */
+
+.card__instructions ol {
+  counter-reset: ordered-list-item;
+}
+
+.card__instructions ol li::before {
+  counter-increment: ordered-list-item;
+  content: counter(ordered-list-item) '.';
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  font-weight: 700;
+  color: var(--brown-800);
+}
+
+/* Nutrition */
+
+.card__nutrition {
+  padding-bottom: 0;
+  border: none;
+}
+
+.card__nutrition table {
+  border-collapse: collapse; /* Correction ici */
+}
+
+.card__nutrition table caption {
+  padding-bottom: 1.5rem;
+  text-align: left;
+}
+
+.card__nutrition table thead {
+  display: none;
+}
+
+.card__nutrition tr:not(:last-child) td {
+  border-bottom: 1px solid var(--stone-150);
+}
+
+.card__nutrition tr:first-child td {
+  padding-top: 0;
+}
+
+.card__nutrition td {
+  padding: 0.75rem 2rem;
+}
+
+.card__nutrition tr td:last-child {
+  padding-left: 0;
+  padding-right: 3rem;
+  font-weight: 700;
+  color: var(--brown-800);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
